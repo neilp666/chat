@@ -8,6 +8,7 @@ class MessagesController < ApplicationController
 
     message.save
     redirect_to @chatroom
+    MessageRelayJob.perform_later(message)
   end
 
   private
